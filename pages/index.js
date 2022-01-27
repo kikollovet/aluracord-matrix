@@ -34,7 +34,7 @@ function Titulo(props) {
 
 export default function PaginaInicial() {
   //const username = 'kikollovet';
-  const [username, setUsername] = React.useState('omariosouto');
+  const [username, setUsername] = React.useState();
   const roteamento = useRouter();
 
   return (
@@ -138,6 +138,10 @@ export default function PaginaInicial() {
                 marginBottom: '16px',
               }}
               src={`https://github.com/${username}.png`}
+              onError={({ currentTarget }) => {
+                currentTarget.onerror = null; // prevents looping
+                currentTarget.src="https://rockcontent.com/br/wp-content/uploads/sites/2/2020/03/github.jpg";
+              }}
             />
             <Text
               variant="body4"
